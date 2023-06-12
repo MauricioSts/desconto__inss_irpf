@@ -1,0 +1,68 @@
+<script>
+var salariobase
+var salarioLiquido
+var inss
+var salarioBruto =parseFloat(prompt("insira seu salario"))
+
+//DESCONTO DO INSS
+   
+ if ( salarioBruto > 0 && salarioBruto <= 1212 ){
+        inss= salarioBruto * 0.075
+
+     }else if(salarioBruto > 1212 && salarioBruto<=2427.35 ) {
+
+        inss = ((salarioBruto - 1212.01)* 0.09)+90.9
+
+    }else{
+
+     if(salarioBruto>2427.36 && salarioBruto<=3641.03 ){
+
+        inss=((salarioBruto  - 2427.36)*0.12)+109.38 + 90.9
+
+
+     }if( salarioBruto>3641.04 && salarioBruto<= 7087.22 ){
+
+        inss=((salarioBruto - 3641.04 )*0.14)+145.64 + 109.38 + 90.9
+
+    
+     }else if(salarioBruto > 7087.2){
+        inss= 828.29
+
+     }
+
+    }if(inss>0){
+    salariobase= salarioBruto - inss
+ }
+   //DESCONTO DO IMPOSTO DE RENDA
+
+   if(salariobase > 0 &&  salariobase <= 1903.98){
+    
+        imposto = 0 
+
+ }else if(salariobase > 1903.99 && salariobase<= 2826.66){
+
+        imposto=((salariobase- 1903.99)*0.075)
+ }
+    else{
+        if( salariobase > 2826.66 && salariobase <= 3751.05){
+
+        imposto= ((salariobase - 2826.66)* 0.15)+69.20
+    }
+
+ }   
+    if(salariobase>3751.06 && salariobase <= 4664.68){
+
+        imposto= ((salariobase- 3751.06)* 0.225)+138.66 + 69.20
+
+    }else if(salariobase> 4664.68){
+
+        imposto = ((salariobase-4664.68 )*0.275)+205.57 + 138.66 + 69.20
+    }
+
+    //Salario real
+
+    salarioLiquido= salarioBruto - inss - imposto
+    alert(salarioLiquido.toFixed(2))
+      //https://youtu.be/1EdHxyibR0c
+  
+</script>
